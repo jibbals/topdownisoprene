@@ -1,0 +1,19 @@
+## ignore latex extras
+**/*.aux
+**/*.blg
+**/*.dvi
+**/*.lof
+**/*.log
+**/*.lot
+**/*.out
+**/*.toc
+**/*.bbl
+**/*.xml
+**/thesis-blx.bib
+**/thesis.run.xml
+**/thesis.bcf
+**/*.gz
+
+
+## some windows crap
+desktop.ini
