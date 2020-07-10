@@ -1,42 +1,20 @@
 
-%
-% ---- Chapter layout ----
-%
-% 1) Introduction - 
-% 2) 
-% ------------------------
-
-
-
 %% 2-column papers and discussion papers
-\documentclass[journal abbreviation, manuscript]{copernicus}
+\documentclass[acp, manuscript]{copernicus}
 
-
-
-
-%% \usepackage commands included in the copernicus.cls:
-%\usepackage[german, english]{babel}
-%\usepackage{tabularx}
-%\usepackage{cancel}
-%\usepackage{multirow}
-%\usepackage{supertabular}
-%\usepackage{algorithmic}
-%\usepackage{algorithm}
-%\usepackage{amsthm}
-%\usepackage{float}
-%\usepackage{subfig}
-%\usepackage{rotating}
-
+%% several \usepackage commands are included in the copernicus.cls
 %% -----------------------------------------
 %% packages added by me
 %% ----------------------------------------
 \usepackage{threeparttable}
+\usepackage{booktabs} % adds \toprule \midrule \bottomrule
+\usepackage{xcolor} % xcolor has more colours than package{color} but doesn't work?
 
 \newcommand{\parencite}{\citep}
 \newcommand{\textcite}{\citet}
 
 %% --------------------------------------
-%% --- my common symbols for stuff ------
+%% --- my command definitions      ------
 %% --------------------------------------
 % Different vertical columns : use $\Ogc$
 
@@ -100,13 +78,12 @@
 
 
 % \Author[affil]{given_name}{surname}
+\Author[1]{Jesse}{Greenslade}
+\Author[1]{Jenny}{Fisher}
+%\Author[]{}{}
 
-\Author[]{}{}
-\Author[]{}{}
-\Author[]{}{}
-
-\affil[]{ADDRESS}
-\affil[]{ADDRESS}
+\affil[1]{University of Wollongong, Australia}
+%\affil[]{ADDRESS}
 
 %% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
 
@@ -120,9 +97,6 @@
 \runningtitle{TEXT}
 
 \runningauthor{TEXT}
-
-
-
 
 
 \received{}
@@ -145,12 +119,11 @@ TEXT
 \end{abstract}
 
 
-\copyrightstatement{TEXT}
+%\copyrightstatement{TEXT}
 
 
-\introduction  %% \introduction[modified heading if necessary]
-TEXT
-
+%%\introduction  %% \introduction[modified heading if necessary]
+%%TEXT
 
 %----------------------------------------------------------------------------------------
 % Section 1 -- INTRO 
@@ -490,7 +463,7 @@ With the computational resources available this would not have been possible usi
     
     
     % Figure from test_filters . show_mask_filtering - two images pasted side by side
-    \mypic{Figures/OMI_link/Filters/AnthroPyroFilters_2005.png}{%
+    \mypic{Figures/Filters/AnthroPyroFilters_2005.png}{%
       Top row shows grid squares filtered out by anthropogenic (left) and pyrogenic (right) influence masks over 2005.
       Bottom row shows portion of Australian grid squares filtered out each day. 
     }{\label{Model:filter:fig_anthropyrofilters}}
@@ -534,7 +507,7 @@ With the computational resources available this would not have been possible usi
     In this work two prior days of active fires are masked.
     
     % Figure from chapter_2_modelling.plot_VCC_firefilter_vs_days
-    \mypic{Figures/OMI_link/VCC_fires_200501.png}{% 
+    \mypic{Figures/VCC_fires_200501.png}{% 
       Recalculated OMI vertical HCHO columns and pixel counts for January 2005.
       Column 1: $VCC_{PP}$ amounts after applying the active fire filter.
       The filter is applied at \highhr ~resolution, before output is averaged into \lowhr ~bins.
@@ -567,7 +540,7 @@ With the computational resources available this would not have been possible usi
     The threshold of 0.03 is chosen as it removes very little of a normal day (row 1), and events with higher AAOD show peaks which appear to be distinct from the normal day distribution above this value.
     
     % Figure from !?!?
-    \mypic{Figures/OMI_link/typical_AAODs_final.png}{%
+    \mypic{Figures/typical_AAODs_final.png}{%
       AAOD from OMAERUVd (columns 1, 2, 3) over Australia for four different scenarios (rows 1-4).
       Density plots show normalised AAOD frequencies (scale not shown), and the threshold used in this work of 0.03 (see text) is demarked by a horizontal line.
       Black Saturday (row 2) refers to the occurrence of widespread bush fires across Victoria. %, which caused 173 deaths.
@@ -589,7 +562,7 @@ With the computational resources available this would not have been possible usi
     The comparison between fire filtering in 2005 and 2012 (Figure 2.31, bottom plot) does not indicate that the proliferation of gas wells in the intervening years had any strong effect on data filtering. 
     
     %Figure from chapter_2_modelling.pyrogenic_filter() + annotation in paint
-    \mypic{Figures/OMI_link/Filters/Pyrogenic_filter_annotated_3.png}{%
+    \mypic{Figures/Filters/Pyrogenic_filter_annotated_3.png}{%
       Top: percentage of pixels filtered out by fire and smoke masks in 2005 (left) and 2012 (right).
       Bottom: percentage filtered out each day from land squares in Australia for the two years shown.
     }{\label{Model:filter:fire:fig_portion_filtered_2005}}
@@ -628,7 +601,7 @@ With the computational resources available this would not have been possible usi
     Anthropogenic influences are clearly visible near major cities in Australia, and some influence can be seen along nearly every coastline.
     
     %Figure from !??
-    \mypic{Figures/OMI_link/OMNO2_timeseries_2005_final.png}{%
+    \mypic{Figures/OMNO2_timeseries_2005_final.png}{%
       Mean (left) and standard deviation (right) of OMNO2d daily 0.25\degr$ \times 0.25 $\degr ~tropospheric cloud filtered NO$_2$ columns. 
       %Time series for Australia, and each region (by colour) shown in the bottom panel, with mean for that region shown on the right. 
       %The grey shaded area depicts the 25th to 75th percentiles of Australia averaged NO$_2$ columns for each day in the time series, with a thicker black line showing the Australia-wide mean value.
@@ -647,7 +620,7 @@ With the computational resources available this would not have been possible usi
     Many coastal regions show some effect from the filtering, and Sydney, Melbourne, and the La Trobe Valley (east of Melbourne) are completely removed.
     
     % Figure from chapter_2_modelling.no2_thresh()
-    \mypic{Figures/OMI_link/OMNO2_thresheffect_2005.png}{%
+    \mypic{Figures/OMNO2_thresheffect_2005_final.png}{%
       Top row: 2005 OMNO2d NO$_2$ column mean before (left) and after (right) applying the anthropogenic threshold filters as described in the text.
       Bottom row: time series for Australia, and each region (by colour) shown in the bottom panels, with mean for that region shown as as horizontal bars within the bottom panels at the right (over 360-400 on the x-axis).
       The time series before and after applying the anthropogenic filter are shown on the left and right respectively. 
@@ -661,7 +634,7 @@ With the computational resources available this would not have been possible usi
     Roughly a quarter of the available data points are removed over Sydney and Melbourne, decreasing the mean NO$_2$ amounts by $\sim{50}\%$, while not too much information is lost overall.
     
     % Figure from test_filters.no2_densities
-    \mypic{Figures/OMI_link/OMNO2_densities_2005.png}{%
+    \mypic{Figures/OMNO2_densities_2005.png}{%
       2005 OMNO2d NO$_2$ column means (top left) and distributions (top right) for Australia, and each region shown in the area map (by colour).
       Vertical dashed lines show the threshold for anthropogenic influence; any columns above this value are filtered out.
       The vertical axis is normalised so that area under the curve adds to unity, and as such is not important except as a visual measure of the relative width between the distributions.
@@ -876,7 +849,7 @@ With the computational resources available this would not have been possible usi
         
         %% FIGURE SHOWS SMEARING BINNED BY NOX
         % Figure made in test_filters.smearing_vs_nox() 
-        \mypic{Figures/OMI_link/Filters/smearing_nox_200501.png}{%
+        \mypic{Figures/Filters/smearing_nox_200501.png}{%
           Top: OMNO2d tropospheric NO$_2$ columns averaged into \lowhr ~horizontal bins for Jan, 2005.
           Bottom: Scatter plot of NO$_2$ against smearing calculations from GEOS-Chem ($\hat{S}$), with points above and below the smearing threshold range of 800-4600~s coloured red and blue respectively. 
           Points are binned by NO$_2$ with and without the smearing filter applied (orange and magenta respectively).
@@ -995,7 +968,7 @@ With the computational resources available this would not have been possible usi
     Due to the \lowhr ~horizontal resolution of GEOS-Chem, calculations over coastal grid boxes that are mostly oceanic are often discarded as the change in HCHO is not dominated by emissions of isoprene, as is assumed for equation \ref{BioIsop:method:slope:eqn_isop_to_hcho}.
     
     %Plot from chapter_3_isop.py
-    \mypic{Figures/OMI_link/GC/E_isop_vs_hcho_sf_200501.png}
+    \mypic{Figures/GC/E_isop_vs_hcho_sf_200501.png}
     { %
       Top left: reduced major axis slope between modelled tropospheric column HCHO and isoprene emissions ($\apri$) using midday (13:00-14:00~LT) values over for January 2005, per grid square at \lowhr ~horizontal resolution.
       Top right: Squared reduced major axis correlation coefficient for regression in top left. 
@@ -1031,7 +1004,7 @@ With the computational resources available this would not have been possible usi
     
     
     % Figure from GC_tests.model_slope_series(), title modified in paint
-    \mypic{Figures/OMI_link/GC/slope_series_Syd_20050101-20121231.png}{%
+    \mypic{Figures/GC/slope_series_Syd_20050101-20121231.png}{%
       Row 1: monthly slope along with 95\% confidence interval both before (blue) and after (magenta) applying the smearing filter for the model grid square containing Sydney over 2005-2012. 
       Row 2: regression coefficient and data point counts before (left) and after (right) performing filtering for slopes shown in row 1.
       Additionally, limits for $r$ and $n$ used in slope utilisation (see text) are shown with dashed lines.
@@ -1050,7 +1023,7 @@ With the computational resources available this would not have been possible usi
     The data loss is generally higher towards the north east and southern coastlines, and at lake Eyre.
     
     % Figure from tests/test_filters.smearing_definition
-    \mypic{/Figures/OMI_link/Filters/smearing_effects_2005.png}{%
+    \mypic{Figures/Filters/smearing_effects_2005.png}{%
       Seasonally averaged smearing ($\hat{S}$, see text) over 2005.
       Diamonds represent grid squares which have had at least 10 (pink) or 30 (red) days removed due to the smearing filter over the season.
       Red crosses show where the filter has removed all data.
@@ -1094,7 +1067,7 @@ With the computational resources available this would not have been possible usi
     
     
     % Figure from chapter_3_isop.py
-    \mypic{Figures/OMI_link/GC/GC_background_hcho_200501.png}{%
+    \mypic{Figures/GC/GC_background_hcho_200501.png}{%
       Top left: Background total column HCHO based on longitudinally averaged values over the remote Pacific Ocean.
       Top right: Background total column HCHO based on GEOS-Chem output with isoprene emissions set to zero.
       Bottom left: Distributions of column amounts over land squares in Australia from the two background definitions and the monthly HCHO average from GEOS-Chem (standard tropchem run).
@@ -1194,7 +1167,7 @@ With the computational resources available this would not have been possible usi
   %The middle region is anomalous to a calibration with low emissions expected.
   
   % figure from Analysis_E_isop.py.show_subregions()
-  \mypic{Figures/OMI_link/subregions.png}{%
+  \mypic{Figures/subregions.png}{%
     Sub-regions used in subsequent figures: \textbf{N}orthern, \textbf{N}orth \textbf{E}astern, \textbf{S}outh \textbf{E}astern, \textbf{S}outh \textbf{W}estern, and \textbf{Mid}dle.
     Australia-wide averages will be black or grey, while averages from within the coloured rectangles will match the colour shown here.
     Oceanic grid squares are filtered out from any area averages made in this chapter.
@@ -1212,7 +1185,7 @@ With the computational resources available this would not have been possible usi
     Across all of Australia large reductions of total emissions are seen using the new top-down estimate.
     
     % Figure from chapter_3_isop.regional_seasonal_comparison
-    \mypic{Figures/OMI_link/new_emiss/RegSeas_emissions_timeseries.png}{%
+    \mypic{Figures/new_emiss/RegSeas_emissions_timeseries.png}{%
       Row 1: Biogenic emissions of isoprene from GEOS-Chem (a priori, E$_{GC}$). 
       Row 2: Emissions calculated using the OMI top-down inversion (a posteriori, E$_{OMI}$).
       Row 3: Absolute differences between the first two rows.
@@ -1221,7 +1194,7 @@ With the computational resources available this would not have been possible usi
     }{\label{BioIsop:results:emissions:fig_time_series_vs_megan}}
     
     % Where's this figure from?
-    \mypic{Figures/OMI_link/Emiss/tga_map.png}{%
+    \mypic{Figures/Emiss/tga_map.png}{%
       Top row: multi-year mean a priori emissions in \tgpyr ~from $\apri$ (GEOS-Chem; running MEGAN) and from $\apost$ (top-down emissions) respectively.
       The total flux from $\apost$ is calculated assuming a sinusoidal daily cycle, with daylight hours prescribed for each month as described in Section \ref{BioIsop:method:conversion_to_kg}).
       Bottom left and right show the absolute and relative differences, respectively.}{\label{BioIsop:results:emissions:fig_tga_comparison_map}}
@@ -1242,7 +1215,7 @@ With the computational resources available this would not have been possible usi
     The cause for these highly uncertain grid squares is not analysed further, but may be worth examining in future work.
     
     % Figure from chapter_3_isop.regional_seasonal_comparison
-    \mypic{Figures/OMI_link/Emiss/E_zones_diffs.png}{%
+    \mypic{Figures/Emiss/E_zones_diffs.png}{%
       Regional multi-year seasonal mean a priori emissions (magenta) compared to a posteriori emissions (cyan).
       Error bars show the regionally averaged uncertainty (calculated as described in \ref{BioIsop:uncertainty:eomi}).
       Additional horizontal dashes show the uncertainty plus effects from potential HCHO biases (discussed in Section \ref{BioIsop:uncertainty:eomi}) from satellite underestimation (40\%) and monthly clear sky overestimation (13\%).
@@ -1270,7 +1243,7 @@ With the computational resources available this would not have been possible usi
     
     
     % Figure from Analyse_E_isop.py -> E_regional_multiyear()
-    \mypic{Figures/OMI_link/Emiss/E_zones_multiyear_PP_lr.png}{ %
+    \mypic{Figures/Emiss/E_zones_multiyear_PP_lr.png}{ %
       The multi-year monthly mean (lines) and inter-quartile-range (shaded) of midday (13:00-14:00~LT) isoprene emissions estimates. 
       %Estimates come from MEGAN run by GEOS-Chem (E$_{GC}$), and the OMI top-down technique (E$_{OMI}$).
       A priori emissions are shown by the dashed lines and hatched shaded areas show the inter-quartile-range.
@@ -1297,7 +1270,7 @@ With the computational resources available this would not have been possible usi
     
     % Figure from Analyse_E_isop.distributions_comparison_regional
     % updated individual images on NCI, stitched on local machine, edited in paint
-    \mypicwh{\textwidth}{0.8\textheight}{Figures/OMI_link/Emiss/monthly_Egressions_final.png}{%
+    \mypicwh{\textwidth}{0.8\textheight}{Figures/Emiss/monthly_Egressions_final.png}{%
       Scatter plot of a priori emissions against a posteriori emissions using monthly averaged grid squares as regression data points.
       Data points are created using monthly averages (of midday emissions) for each grid box for each month of summer (DJF) within each region shown.
       Multiple years of data are used, meaning if a region has 10 grid boxes, the 8 years of data will add up to 10 boxes $\times 3$ months  $\times 8$ years $= 240$ data points minus filtered and zero emission squares.
@@ -1381,7 +1354,7 @@ With the computational resources available this would not have been possible usi
       This potential bias is not analysed further, and should be relatively small compared to other uncertainties as it only affects emissions towards the daily minima.
       
       % Figure from chapter_3_isop.Seasonal_daycycle
-      \mypic{Figures/OMI_link/Emiss/MEGAN_monthly_daycycle_final.png}{ %
+      \mypic{Figures/Emiss/MEGAN_monthly_daycycle_final.png}{ %
         The diurnal cycle of GEOS-Chem a priori emissions (solid line) averaged by month into hourly bins over from 2005 to 2013 along with top-down a posteriori (dashed line) emissions.
         Standard deviations for the monthly average are shaded for the a priori, and shown with error bars at 13:30~LT for the a posteriori.
         Top-down emissions shown here are based on monthly midday emissions being the peak of a sine wave which drops to zero after and before daylight hours (see Section \ref{BioIsop:method:conversion_to_kg}).
@@ -1457,7 +1430,7 @@ With the computational resources available this would not have been possible usi
       
       
       % trend figures from chapter_3_isop.trend_analysis
-      \mypic{Figures/OMI_link/new_emiss/trend_isop.png}{%
+      \mypic{Figures/new_emiss/trend_isop.png}{%
         A priori (row 1) and a posteriori (row 2) monthly emissions anomalies from multi-year monthly mean, split by region (see Figure \ref{BioIsop:results:fig_subregions}).
       }{\label{BioIsop:results:new_emiss:trends:fig_emission_anomalies}}
    
@@ -1473,7 +1446,7 @@ With the computational resources available this would not have been possible usi
     GEOS-Chem emissions are scaled according to this multi-year averaged gridded $\alpha$, which is seasonal and spatially diverse.
     
     % Figure from tests/test_new_emissions.alpha_creation()
-    \mypic{Figures/OMI_link/new_emiss/alpha_mya.png}{%
+    \mypic{Figures/new_emiss/alpha_mya.png}{%
       Row 1: Isoprene emissions scaling factor $\alpha$ for the average January (left) and July (right) over 2005-2012.
       Row 2: a priori (magenta, left axis), a posteriori (cyan, left axis), and  $\alpha$ ~(black, right axis) multi-year monthly averages calculated for the 2\degr x 2.5\degr ~grid box containing Sydney.
     }{\label{BioIsop:results:new_emiss:fig_alpha_mya}}
@@ -1489,7 +1462,7 @@ With the computational resources available this would not have been possible usi
       
       
       % figure from initial version of tests/test_new_emissions.hcho_ozone_timeseries
-      \mypic{Figures/OMI_link/new_emiss/HCHO_total_columns_20050101_20050228.png}{%
+      \mypic{Figures/new_emiss/HCHO_total_columns_20050101_20050228.png}{%
         Daily mean total column HCHO amounts from GEOS-Chem with a priori (new emissions run) and a posteriori (tropchem run) a posteriori scaled isoprene emissions, along with the recalculated OMI HCHO columns.
         Each row shows the average over regions in Figure \ref{BioIsop:results:fig_subregions}. }{\label{BioIsop:results:emissions:fig_prelim_new_emiss_HCHO}}
       
@@ -1507,13 +1480,13 @@ With the computational resources available this would not have been possible usi
       
       
       % Figure from chapter_3_isop.seasonal_differences
-      \mypic{Figures/OMI_link/new_emiss/HCHO_total_columns_seasonal.png}{%
+      \mypic{Figures/new_emiss/HCHO_total_columns_seasonal.png}{%
         Total column HCHO a priori (left) and a posteriori (middle) isoprene emissions, and their relative differences (right).
         Top row shows summer (DJF) averaged total columns, while bottom row shows the winter (JJA).
       }{\label{BioIsop:results:emissions:fig_hcho_reduction}}
       
       % Figure from chapter_3_isop.hcho_vs_satellite
-      \mypic{Figures/OMI_link/hcho_vs_satellite.png}{%
+      \mypic{Figures/hcho_vs_satellite.png}{%
         Regionally and seasonally averaged HCHO total columns from GEOS-Chem ($\Omega_{GC}$, and $\Omega_{GC}^{\alpha}$) and recalculated OMI measurements ($\Omega_{OMI}$) side by side.
         Each row represents one region within Australia, while each column represents from left to right: summer, autumn, winter, spring.
         Standard deviations between grid boxes used to form the multi-year seasonal average are shown with error bars.
@@ -1524,7 +1497,7 @@ With the computational resources available this would not have been possible usi
       This reduction of HCHO is greatest at the surface, and is highly correlated ($r>.8$) in all regions to the reduction in isoprene emissions.
       The high correlation is effectively a sanity check of the top-down method used in this thesis to estimate isoprene emissions.
       
-      \mypicw{0.5\textwidth}{Figures/OMI_link/check_GC_profile.png}{%
+      \mypicw{0.5\textwidth}{Figures/check_GC_profile.png}{%
         Monthly averaged HCHO profile over the 2\degr x 2\degr ~grid box containing Wollongong modelled by GEOS-Chem before (VMR) and after (VMR$^{\alpha}$) scaling isoprene emissions.
         Shaded areas represent the inter-quartile range over the month.
       }{\label{BioIsop:results:emissions:fig_profile_example}}
@@ -1543,7 +1516,7 @@ With the computational resources available this would not have been possible usi
       Surface ozone is reduced in summer by approximately 5\%, with hotspots of reduction over southern New South Wales, Victoria, and Western Australia.
       
       % plot from tests/test_new_emissions.hcho_ozone_series
-      \mypic{Figures/OMI_link/new_emiss/O3_surface_20050101_20051231.png}{%
+      \mypic{Figures/new_emiss/O3_surface_20050101_20051231.png}{%
         Surface ozone concentrations (ppb) per region over 2005.
         Concentrations are shown using the left axis, and absolute differences (tropchem run - scaled run) shown in grey using the right axis.
       }{\label{BioIsop:results:emissions:fig_new_emiss_series_O3}}
@@ -1551,7 +1524,7 @@ With the computational resources available this would not have been possible usi
       %JENNY NOTE: could note that future work will downscale your emissions to evaluate impacts on O3 when spatial segregation of NOx and isoprene are properly accounted for. See Yu et al. ACP 2016 about resolution dependencies
       
       % Figure from tests/test_new_emissions.spatial_comparisons
-      \mypic{Figures/OMI_link/new_emiss/O3_surf_map_Summer_05.png}{%
+      \mypic{Figures/new_emiss/O3_surf_map_Summer_05.png}{%
         Top row: Summer surface-level ozone before (left) and after (right) scaling isoprene emissions in GEOS-Chem to match top-down estimates.
         Middle row: absolute (left) and relative (right) differences.
         Bottom row: linear regression between the two model runs along with a black dashed line representing the 1-1 ratio.
@@ -1571,7 +1544,7 @@ With the computational resources available this would not have been possible usi
       
       
       % chapter_3_isop.seasonal_differences
-      \mypic{Figures/OMI_link/new_emiss/O3_surf_map_seasonal.png}{%
+      \mypic{Figures/new_emiss/O3_surf_map_seasonal.png}{%
         Multi-year seasonal surface (up to $\sim{150}$~m) ozone before (left) and after (middle) scaling isoprene emissions, and their relative differences (right).
         Top row shows summer (DJF) averaged total columns, while bottom row shows the winter (JJA).
       }{\label{BioIsop:results:emissions:fig_ozone_reduction}}
@@ -1640,7 +1613,7 @@ With the computational resources available this would not have been possible usi
     %}{\label{Model:datasets:SPS:fig_series}}
     
     % Figure from chapter_3_isop.campaign_vs_GC
-    \mypic{Figures/OMI_link/GC_VS_CAMPAIGNS_midday.png}{%
+    \mypic{Figures/GC_VS_CAMPAIGNS_midday.png}{%
       SPS1, SPS2, and MUMBA (left to right columns respectively) midday (13:00-14:00 local time) measurements of isoprene, HCHO, and ozone (top to bottom rows respectively).
       Shown in magenta and brown are the a priori and a posteriori GEOS-Chem surface outputs for the matching grid square at midday for days containing measurements.
     }{\label{BioIsop:results:measurements:fig_campaign_comparison}}
@@ -1722,7 +1695,7 @@ With the computational resources available this would not have been possible usi
     %This is only qualitative as Wollongong measurements are not representative of the entire grid box which GEOS-Chem averages, and more measurements would be required to estimate model bias over any large grid square.
     
     % Figure from where????
-    \mypic{Figures/OMI_link/FTIR_TC_Comparison_MYA.png}{%
+    \mypic{Figures/FTIR_TC_Comparison_MYA.png}{%
       Multi-year (from all days where both measurements and model data exist: 2007-2012) monthly mean total column ($\Omega$) HCHO from the FTIR instrument at Wollongong (southeast Australia), and the colocated convolved GEOS-Chem equivalent before ($\Omega_{GC}$) and after ($\Omega_{GC}^{\alpha}$) scaling isoprene emissions.
       Shaded areas show inter quartile range.
     }{\label{BioIsop:results:measurements:fig_FTIR_Comparison_MYA}}
@@ -1753,8 +1726,6 @@ With the computational resources available this would not have been possible usi
     %%WINTER : VCC = +4.41e+15, FTIR=+3.68e15, VCCa=+4.49e+15
   
   
-  
-    
 \section{Uncertainty}
 \label{BioIsop:uncertainty}
   
@@ -1846,13 +1817,13 @@ With the computational resources available this would not have been possible usi
     %This higher relative uncertainty sits on top of lower absolute emissions.
     
     % Figure from chapter_3_isop.relative_error_summary
-    \mypic{Figures/OMI_link/mya_Ererr.png}{%
+    \mypic{Figures/mya_Ererr.png}{%
       Median and inter-quartile range of multi-year monthly relative uncertainty in the a posteriori.
       Median relative uncertainty in $S$ and $\Omega$ are added as dashed and dotted lines respectively.
       }{\label{BioIsop:uncertainty:fig_ErerrSummary}}
     
     %chapter_3_isop.
-    \mypic{Figures/OMI_link/Ererr_map_summerwinter_final.png}{%
+    \mypic{Figures/Ererr_map_summerwinter_final.png}{%
       Summer (DJF, top row) and winter (JJA, bottom row) a posteriori emissions (left column) and relative error (right column). 
     }{\label{BioIsop:uncertainty:fig_Ererrmap}}
     
@@ -1880,7 +1851,7 @@ With the computational resources available this would not have been possible usi
     Slope estimation may also be affected by non-isoprene biogenic VOC emissions such as monoterpenes, which are not analysed in this work. 
     The effects of these biogenics will be in part seen by $\Delta S$ (as they make up some of the variability); however this is an important source of HCHO that will need to be attributed in future work to improve confidence in the estimation of $S$. 
     
-    \mypic{Figures/OMI_link/mya_Srerr.png}{%
+    \mypic{Figures/mya_Srerr.png}{%
       Median and inter-quartile range of monthly binned uncertainty in $S$.
     }{\label{BioIsop:uncertainty:Model:fig_Srerrsummary}}
     
@@ -1990,7 +1961,7 @@ With the computational resources available this would not have been possible usi
     The lowest pixel counts occur in the southeast in winter, likely due to a mix of relatively high solar zenith angles and filtering of anthropogenic emissions.
     Northern regions have lower pixel counts in the summer, most likely due to increased cloud coverage which limits satellite measurement capabilities as discussed previously.
     
-    \mypic{Figures/OMI_link/pixel_count_barchart_unfiltered.png}{%
+    \mypic{Figures/pixel_count_barchart_unfiltered.png}{%
       Mean and standard deviation (vertical error bars) of total pixel counts per region per season, before (magenta) and after (cyan) applying smearing, pyrogenic, and anthropogenic filters.
     }{\label{BioIsop:uncertainty:satellite:fig_pixel_count_summary}}
     
@@ -2000,7 +1971,7 @@ With the computational resources available this would not have been possible usi
     Uncertainty in winter at higher latitudes is greatly increased due to lower pixel counts, lower absolute column amounts, and higher fitting error.
     
     %chapter_3_isop.relative_error_summary
-    \mypic{Figures/OMI_link/mya_Orerr.png}{%
+    \mypic{Figures/mya_Orerr.png}{%
       Median and inter-quartile range for monthly binned relative uncertainty in satellite vertical columns.
     }{\label{BioIsop:uncertainty:satellite:fig_Orerrsummary}}
     
@@ -2092,7 +2063,7 @@ With the computational resources available this would not have been possible usi
       
       
       %% FIGURE from chapter_3_isop.sensitivity_recalculation
-      \mypic{Figures/OMI_link/Sensitivity_recalculation_2005.png}{%
+      \mypic{Figures/Sensitivity_recalculation_2005.png}{%
         Top row: averaged OMI Satellite AMF for 2005, from the OMHCHO dataset (left, $AMF_{OMI}$), recalculated using GEOS-Chem shape factors  (middle, $AMF_{GC}$), and recalculated using GEOS-Chem shape factors and scattering weights (right, $AMF_{PP}$).
         Middle row: mean and inter-quartile range of each AMF over 2005 for each season.
         Bottom row: mean and inter-quartile range of non-zero a priori emissions based on the three AMFs (with matching subscripts) along with the a priori emissions from GEOS-Chem.
@@ -2110,7 +2081,7 @@ With the computational resources available this would not have been possible usi
       Seasonality in the fire filter may result matching seasonality of the Australian bushfire season, which spreads from the north to the south from July to March (TODO: Andrew Dowdy 2018 climatological variability of fire weather in australia).
       
       % Figure from chapter_3_isop.sensitivity_filtering
-      \mypic{Figures/OMI_link/Sensitivity_filtering_final.png}{%
+      \mypic{Figures/Sensitivity_filtering_final.png}{%
         Multi-year monthly mean values for a posteriori emission estimates calculated with (solid) and without (dashed) applying filters for anthropogenic, pyrogenic, and smearing influences.
         The portion of pixels within each region which are filtered is shown on the right axis with a blue dotted line.
       }{\label{BioIsop:uncertainty:filtering:fig_summary}}
@@ -2203,19 +2174,19 @@ With the computational resources available this would not have been possible usi
  %% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
  %% It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
  
- \codeavailability{TEXT} %% use this section when having only software code available
+ %\codeavailability{TEXT} %% use this section when having only software code available
  
  
- \dataavailability{TEXT} %% use this section when having only data sets available
+ %\dataavailability{TEXT} %% use this section when having only data sets available
  
  
  \codedataavailability{TEXT} %% use this section when having data sets and software code available
  
  
- \sampleavailability{TEXT} %% use this section when having geoscientific samples available
+ %\sampleavailability{TEXT} %% use this section when having geoscientific samples available
  
  
- \videosupplement{TEXT} %% use this section when having video supplements available
+ %\videosupplement{TEXT} %% use this section when having video supplements available
  
  
 \appendix
@@ -2246,7 +2217,7 @@ With the computational resources available this would not have been possible usi
 
 \competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
 
-\disclaimer{TEXT} %% optional section
+%\disclaimer{TEXT} %% optional section
 
 \begin{acknowledgements}
   %All model runs, configuration, and alterations were performed by the Author, with initial discussions with Jenny Fisher.
@@ -2262,8 +2233,11 @@ With the computational resources available this would not have been possible usi
 
 %% REFERENCES
 
-%% The reference list is compiled as follows:
+\bibliographystyle{copernicus}
 \bibliography{references}
+
+%% The reference list is compiled as follows:
+%%\bibliography{references}
 %%\begin{thebibliography}{}
 %%
 %%\bibitem[AUTHOR(YEAR)]{LABEL1}

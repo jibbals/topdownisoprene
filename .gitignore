@@ -9,9 +9,6 @@
 **/*.toc
 **/*.bbl
 **/*.xml
-**/thesis-blx.bib
-**/thesis.run.xml
-**/thesis.bcf
 **/*.gz
 
 
